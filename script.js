@@ -1,5 +1,12 @@
 function volume_sphere() {
-    //Write your code here
+
+	const result = 0
+    if(typeof radius !== "number" || Number.isNaN(radius)) return "NaN"
+	else {
+		result = (4/3) * Math.PI * radius * radius
+	}
+
+	return result.toFixed(4)
   
 } 
 

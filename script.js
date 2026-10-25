@@ -1,13 +1,18 @@
-function volume_sphere() {
+function volume_sphere(e) {
+    if (e) e.preventDefault();
 
-	const result = 0
-    if(typeof radius !== "number" || Number.isNaN(radius)) return "NaN"
-	else {
-		result = (4/3) * Math.PI * radius * radius
-	}
+    const radiusInput = document.getElementById('radius').value;
+    const radius = parseFloat(radiusInput);
+    const volumeField = document.getElementById('volume');
 
-	return result.toFixed(4)
-  
-} 
+    if (isNaN(radius) || radius < 0) {
+        volumeField.value = 'NaN';
+    } else {
+        const volume = (4 / 3) * Math.PI * Math.pow(radius, 3);
+        volumeField.value = volume.toFixed(4);
+    }
+}
 
-window.onload = document.getElementById('MyForm').onsubmit = volume_sphere;
+window.onload = function() {
+    document.getElementById('MyForm').onsubmit = volume_sphere;
+};
